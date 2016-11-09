@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     
     let game: GameType
+    var buttons: [FactButton] = []
     
     required init?(coder aDecoder: NSCoder) {
         do {
@@ -30,16 +31,8 @@ class ViewController: UIViewController {
       // Do any additional setup after loading the view, typically from a nib.
         let round = game.selectNextRound() as! Round
         for i in 0..<round.facts.count {
-            let factButton = round.getButton(forIndex: i)
-            self.view.addSubview(factButton.eventButton)
-            
-            if let upButton = factButton.upButton {
-                self.view.addSubview(upButton)
-            }
-            
-            if let downButton = factButton.downButton {
-                self.view.addSubview(downButton)
-            }
+            let factButton = FactButton(fact: round.facts[i], index: i, maxIndex: round.facts.count, target: self, action: #selector(buttonPressed(sender:)), view: self.view)
+            buttons.append(factButton)
         }
     }
 
@@ -48,5 +41,17 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func buttonPressed(sender: UIButton) {
+        if let title = sender.currentTitle {
+            print("Pressed button #\(sender.tag)")
+            print("Title: \(title)")
+        } else {
+            if sender.tag > 0 {
+                print("Pressed UP arrow of fact #\(sender.tag)")
+            } else {
+                print("Pressed DOWN arrow of fact #\(sender.tag)")
+            }
+        }
+    }
 }
 
