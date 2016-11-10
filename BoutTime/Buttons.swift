@@ -33,6 +33,9 @@ protocol FactButtonType {
     var downImage: UIImageView? { get }
     var upButton: UIButton? { get }
     var downButton: UIButton? { get }
+    
+    init(fact: FactType, index: Int, maxIndex: Int, target: Any?, action: Selector, view: UIView)
+    func updateEventButton(fact: FactType)
 }
 
 class FactButton: FactButtonType {
@@ -42,19 +45,14 @@ class FactButton: FactButtonType {
     var upButton: UIButton?
     var downButton: UIButton?
     
-    init(fact: FactType, index: Int, maxIndex: Int, target: Any?, action: Selector, view: UIView) {
+    required init(fact: FactType, index: Int, maxIndex: Int, target: Any?, action: Selector, view: UIView) {
         var x = 20
         let height = (Int(UIScreen.main.bounds.height) - 100 - 20 * maxIndex) / maxIndex
         let y = 20 + (height + 20) * index
         var width = Int(UIScreen.main.bounds.width) - 80
         let titleColor = UIColor(red: 8/255.0, green: 43/255.0, blue: 62/255.0, alpha: 1.0)
         let backgroundColor = UIColor.white
-        
-        var title = fact.event
-        if title.characters.count > 100 { // max length 100 chars
-            let startIndex = title.index(title.startIndex, offsetBy: 100)
-            title = title.substring(to: startIndex)
-        }
+        let title = fact.getTitle()
         
         self.eventButton = UIButton(type: .system)
         self.eventButton.setTitle(title, for: .normal)
@@ -121,12 +119,16 @@ class FactButton: FactButtonType {
             self.downButton = nil
         }
     }
-    
+    // Helper methods
     func getImage(image: UIImage, rect: CGRect) -> UIImageView {
         let imageView = UIImageView(image: image)
         imageView.frame = rect
         imageView.isHidden = false
         return imageView
+    }
+    
+    func updateEventButton(fact: FactType) {
+        self.eventButton.setTitle(fact.getTitle(), for: .normal)
     }
 }
 

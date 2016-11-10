@@ -11,13 +11,21 @@ import GameKit
 protocol FactType {
     var event: String { get }
     var year: Int { get }
+    var link: String { get }
+    
+    func getTitle() -> String
+}
+
+protocol Swapable {
+    mutating func up(index: Int)
+    mutating func down(index: Int)
 }
 
 protocol RoundType {
     init(facts: [FactType])
     func isSet() -> Bool
-    mutating func up(index: Int)
-    mutating func down(index: Int)
+    func showAndGetButtons(target: Any?, action: Selector, view: UIView) -> [FactButtonType]
+    func updateEventButtons(buttons: [FactButtonType])
 }
 
 protocol GameType {
@@ -29,16 +37,26 @@ protocol GameType {
     var factsPerRound: Int { get }
     
     init(facts: [FactType], rounds: Int, timePerRound: Int, factsPerRound: Int)
-    func selectNextRound() -> RoundType
+    func selectNextRound() -> Round
     func isFinished() -> Bool
 }
 
 struct Fact: FactType {
     let event: String
     let year: Int
+    let link: String
+    
+    func getTitle() -> String {
+        var title = self.event
+        if title.characters.count > 100 { // max length 100 chars
+            let startIndex = title.index(title.startIndex, offsetBy: 100)
+            title = title.substring(to: startIndex)
+        }
+        return title
+    }
 }
 
-class Round: RoundType {
+class Round: RoundType, Swapable {
     var facts: [FactType]
     
     required init(facts: [FactType]) {
@@ -61,14 +79,31 @@ class Round: RoundType {
     func isSet() -> Bool {
         var isSet = true
         for i in 1..<facts.count {
-            if facts[i].year < facts[i-1].year {
+            if facts[i].year > facts[i-1].year {
                 isSet = false
             }
         }
         return isSet
     }
+    
+    func showAndGetButtons(target: Any?, action: Selector, view: UIView) -> [FactButtonType] {
+        var buttons: [FactButtonType] = []
+        for i in 0..<self.facts.count {
+            let fact = self.facts[i]
+            let factButton = FactButton(fact: fact, index: i, maxIndex: self.facts.count, target: target, action: action, view: view)
+            buttons.append(factButton)
+        }
+        return buttons
+    }
+    
+    func updateEventButtons(buttons: [FactButtonType]) {
+        for i in 0..<self.facts.count {
+            let fact = self.facts[i]
+            let button = buttons[i]
+            button.updateEventButton(fact: fact)
+        }
+    }
 }
-
 
 class Game: GameType {
     let facts: [FactType]
@@ -88,7 +123,7 @@ class Game: GameType {
     }
     
     // select factsPerRound (4) random facts from facts array, avoid repeats
-    func selectNextRound() -> RoundType {
+    func selectNextRound() -> Round {
         var choosenFacts: [FactType] = []
         var randomIndex: Int
         var indexesUsed: [Int] = [] // store here already choosen fact indexes
@@ -119,6 +154,10 @@ enum InventoryError: Error {
     case InvalidKey
 }
 
+enum FactError: Error {
+    case OutOfRange
+}
+
 // Helper classes
 
 class PlistConverter {
@@ -137,8 +176,8 @@ class InventoryUnarchiver {
     class func factsFromArray(array: [AnyObject]) throws -> [FactType] {
         var facts: [FactType] = []
         for element in array {
-            if let itemDict = element as? [String: AnyObject], let event = itemDict["event"] as? String, let year = itemDict["year"] as? Int {
-                let fact = Fact(event: event, year: year)
+            if let itemDict = element as? [String: AnyObject], let event = itemDict["event"] as? String, let year = itemDict["year"] as? Int, let link = itemDict["link"] as? String {
+                let fact = Fact(event: event, year: year, link: link)
                 facts.append(fact)
             }
         }

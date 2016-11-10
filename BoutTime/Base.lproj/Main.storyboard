@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -42,22 +43,79 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="next_round_fail" translatesAutoresizingMaskIntoConstraints="NO" id="tjF-KA-zhe">
+                                <rect key="frame" x="116" y="582" width="143" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="1eM-pE-yBO"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="next_round_success" translatesAutoresizingMaskIntoConstraints="NO" id="EPZ-mF-BwL">
+                                <rect key="frame" x="116" y="582" width="143" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="3F5-GP-yBv"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="webview_bar" translatesAutoresizingMaskIntoConstraints="NO" id="h0k-QN-xy5">
+                                <rect key="frame" x="0.0" y="20" width="375" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="alw-92-OOp"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="eLk-A4-YDP"/>
+                                </constraints>
+                            </imageView>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gSX-dC-JNf">
+                                <rect key="frame" x="0.0" y="65" width="375" height="602"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oF5-g8-iHe">
+                                <rect key="frame" x="329" y="20" width="46" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="closeWeb" destination="BYZ-38-t0r" eventType="touchUpInside" id="TvL-k0-VSk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.031548917289999999" green="0.16887250540000001" blue="0.24206548929999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="h0k-QN-xy5" secondAttribute="trailing" id="17Q-Dv-Dif"/>
                             <constraint firstItem="5Q5-Bi-78U" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1c6-LB-f8N"/>
+                            <constraint firstItem="gSX-dC-JNf" firstAttribute="top" secondItem="h0k-QN-xy5" secondAttribute="bottom" id="3vS-aI-hXb"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="18a-7u-CxN" secondAttribute="bottom" constant="45" id="4w3-cM-0Lx"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5Q5-Bi-78U" secondAttribute="bottom" constant="20" id="CPV-r7-0PF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EPZ-mF-BwL" secondAttribute="trailing" constant="100" id="G3K-ih-Fj6"/>
+                            <constraint firstItem="tjF-KA-zhe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="100" id="Ipv-q6-5h1"/>
+                            <constraint firstItem="EPZ-mF-BwL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="100" id="KNm-Nq-NId"/>
+                            <constraint firstItem="h0k-QN-xy5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="MVf-RK-Grx"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gSX-dC-JNf" secondAttribute="bottom" id="WSd-aW-lS1"/>
+                            <constraint firstItem="h0k-QN-xy5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZfP-gA-Z7p"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="tjF-KA-zhe" secondAttribute="bottom" constant="45" id="fAv-g8-YNC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tjF-KA-zhe" secondAttribute="trailing" constant="100" id="lJ8-Ze-N6S"/>
+                            <constraint firstItem="h0k-QN-xy5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mhW-4R-8qy"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EPZ-mF-BwL" secondAttribute="bottom" constant="45" id="qCJ-vw-fwS"/>
+                            <constraint firstAttribute="trailing" secondItem="gSX-dC-JNf" secondAttribute="trailing" id="qbt-9M-i5D"/>
+                            <constraint firstAttribute="trailing" secondItem="h0k-QN-xy5" secondAttribute="trailing" id="u5c-R4-NSQ"/>
+                            <constraint firstItem="gSX-dC-JNf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="u87-77-sZG"/>
+                            <constraint firstItem="gSX-dC-JNf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xBz-oe-opG"/>
+                            <constraint firstAttribute="trailing" secondItem="gSX-dC-JNf" secondAttribute="trailing" id="yP3-KT-f86"/>
                             <constraint firstItem="18a-7u-CxN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zfX-sa-CUG"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="nextRoundFailImageView" destination="tjF-KA-zhe" id="ZWD-dj-fEJ"/>
+                        <outlet property="nextRoundSuccessImageView" destination="EPZ-mF-BwL" id="MB0-EA-25a"/>
                         <outlet property="timeLabel" destination="18a-7u-CxN" id="Gx0-Gr-6sf"/>
+                        <outlet property="webBarCloseButton" destination="oF5-g8-iHe" id="VOG-kn-ds0"/>
+                        <outlet property="webView" destination="gSX-dC-JNf" id="qaz-rZ-pMy"/>
+                        <outlet property="webViewBar" destination="h0k-QN-xy5" id="ceU-Us-PIB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="180" y="138.0809595202399"/>
+            <point key="canvasLocation" x="-594.39999999999998" y="122.78860569715144"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="next_round_fail" width="279" height="71"/>
+        <image name="next_round_success" width="279" height="71"/>
+        <image name="webview_bar" width="666" height="83"/>
+    </resources>
 </document>

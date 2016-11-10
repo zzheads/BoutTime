@@ -7,186 +7,280 @@
 		<string>The National Hockey League (NHL) was founded</string>
 		<key>year</key>
 		<integer>1917</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/History_of_the_National_Hockey_League_(1917%E2%80%9342)</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>The Hockey Hall of Fame is located in Toronto, Ontario.</string>
+		<string>The Hockey Hall of Fame is located in Toronto, Ontario</string>
 		<key>year</key>
 		<integer>1943</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/Hockey_Hall_of_Fame</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>Montreal Canadiens goaltender Jacques Plante is credited with being the creator of the modern goalie mask. He wore a face mask during a game</string>
+		<string>Montreal Canadiens goaltender Jacques Plante is credited with being the creator of the modern goalie mask</string>
 		<key>year</key>
 		<integer>1959</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/Goaltender_mask</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>The first organized indoor hockey game was played at Montreal’s Victoria Skating Rink, between two teams of nine players each, many of whom were McGill University students.</string>
+		<string>&quot;Pittsburgh Penguins&quot; scored only 38 points, which was the worst result in the team&apos;s history.</string>
+		<key>year</key>
+		<integer>1983</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/1983%E2%80%9384_Pittsburgh_Penguins_season</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>player of &quot;Colorado&quot; Sylvain Lefebvre baptized his daughter in the Stanley Cup</string>
+		<key>year</key>
+		<integer>1996</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/Traditions_and_anecdotes_associated_with_the_Stanley_Cup#Misadventures</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>The first organized indoor hockey game was played at Montreal’s Victoria Skating Rink</string>
 		<key>year</key>
 		<integer>1875</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/First_indoor_hockey_game</string>
 	</dict>
 	<dict>
 		<key>event</key>
 		<string>The Montreal Canadiens have won the most Stanley Cups in league history, with 23. The most recent came in </string>
 		<key>year</key>
 		<integer>1993</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/Montreal_Canadiens</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>Darryl Sittler holds the NHL record for most points in a single game, with 10. He scored five goals and had five assists helping his Toronto Maple Leafs defeat the Boston Bruins, on</string>
+		<string>Darryl Sittler holds the NHL record for most points in a single game, with 10</string>
 		<key>year</key>
 		<integer>1976</integer>
+		<key>link</key>
+		<string>https://www.nhl.com/news/sittlers-single-game-points-record-still-untouched/c-654550</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>Phil Esposito of the Boston Bruins was the first NHL player to record 100 points in a season, in </string>
+		<string>Phil Esposito of the Boston Bruins was the first NHL player to record 100 points in a season</string>
 		<key>year</key>
 		<integer>1969</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/Phil_Esposito</string>
 	</dict>
 	<dict>
 		<key>event</key>
 		<string>The last player in the NHL to play without a helmet was Craig MacTavish, who retired in </string>
 		<key>year</key>
 		<integer>1997</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/Hockey_helmet</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>The NHL record for most goals in a game is owned by Joe Malone, who scored seven times for the Quebec Bulldogs against the Toronto St. Pats on </string>
+		<string>The NHL record for most goals in a game is owned by Joe Malone, who scored seven times for the Quebec Bulldogs </string>
 		<key>year</key>
 		<integer>1920</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/Joe_Malone_(ice_hockey)</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>In , goalie Manon Rhéaume became the first woman to play in the NHL, suiting up for the Tampa Bay Lightning during an exhibition game.</string>
+		<string>goalie Manon Rhéaume became the first woman to play in the NHL</string>
 		<key>year</key>
 		<integer>1992</integer>
+		<key>link</key>
+		<string>https://www.nhl.com/news/part-1-manon-rheaume-shatters-the-gender-barrier/c-642005</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>Montreal Canadiens team featured 12 future Hall of Famers in</string>
+		<string>Montreal Canadiens team featured 12 future Hall of Famers</string>
 		<key>year</key>
 		<integer>1956</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/1956%E2%80%9357_Montreal_Canadiens_season#Awards_and_records</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>Paul Coffey of the Edmonton Oilers set an NHL record for defencemen with 37 points in the playoffs of</string>
+		<string>Paul Coffey of the Edmonton Oilers set an NHL record for defencemen with 37 points </string>
 		<key>year</key>
 		<integer>1985</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/Paul_Coffey</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>In , the Boston Bruins signed Bobby Orr to a five-year deal worth $200,000 per season —the first million dollar contract in NHL history. </string>
+		<string>the Boston Bruins signed Bobby Orr to a five-year deal worth $200,000 per season - the first million dollar contract in NHL history</string>
 		<key>year</key>
 		<integer>1971</integer>
+		<key>link</key>
+		<string>http://proicehockey.about.com/od/history/f/first_millions.htm</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>Now, about the ice cleaning machine — that zamboni that goes around the ice several times each game to make sure players have a clean smooth piece of ice? That was invented by Frank Zamboni in</string>
+		<string>Ice cleaning machine was invented by Frank Zamboni</string>
 		<key>year</key>
 		<integer>1949</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/Ice_resurfacer</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>Remember the Disney movie The Mighty Ducks? The Anaheim Ducks are named after this movie. They used to be known as the Mighty Ducks of Anaheim as the team was founded by the Walt Disney Company in </string>
+		<string>The Anaheim Ducks are named after &quot;The Mighty Ducks&quot; movie and was founded by the Walt Disney Company</string>
 		<key>year</key>
 		<integer>1993</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/Anaheim_Ducks</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>The Buffalo Sabres are the only team to have killed a live animal during a hockey game. The team killed a bat during the game in </string>
+		<string>The Buffalo Sabres are the only team to have killed a live animal during a hockey game. The team killed a bat during the game</string>
 		<key>year</key>
-		<integer>1974</integer>
+		<integer>1975</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/1975_Stanley_Cup_Finals</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>Kris Draper was traded for just 1$ to Detroit Red Wings in . Thus, he began his reputation as the “One Dollar Man” and went on to win four Stanley Cups for Detroit. </string>
+		<string>Kris Draper was traded for just 1$ to Detroit Red Wings</string>
 		<key>year</key>
 		<integer>1993</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/Kris_Draper#Playing_career</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>In  World Ice Hockey Championship, the Canadian team was considered so dominant that it did not participate in the knock-out tournament. Canada was right away put into the final game and the tournament was played to determine an opponent. Canada won.</string>
+		<string>the Canadian team was considered so dominant that it did not participate in the knock-out tournament of World Cup</string>
 		<key>year</key>
 		<integer>1930</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/1930_World_Ice_Hockey_Championships</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>Jarome Iginla donates $2,000 to the children’s charity Kidsport for every goal he scores in .Since he has added more than $700,000.</string>
+		<string>Jarome Iginla has added more than $700,000 to the children’s charity Kidsport</string>
 		<key>year</key>
 		<integer>2000</integer>
+		<key>link</key>
+		<string>http://www.calgaryherald.com/sports/Superstar+touch+will+continue+benefit+charities/8168079/story.html</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>The decision to install higher plexiglass panels in all hockey arenas was taken after a player-spectator brawl in . After a 4-3 victory over the New York Rangers, Mike Milbury of the Boston Bruins jumped over the glass, tore off a boisterous spectator’s shoe and proceeded to beat him with it. His actions resulted in a six-game suspension.</string>
+		<string>The decision to install higher plexiglass panels in all hockey arenas was taken after a player-spectator brawl</string>
 		<key>year</key>
 		<integer>1979</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/Mike_Milbury#Shoe_Incident</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>The Slovakian women’s hockey team qualified for the  Olympics by beating Bulgaria 82-0. They later lost to team Canada in Vancouver 18-0.</string>
+		<string>The Slovakian women’s hockey team qualified for the Olympics by beating Bulgaria 82-0</string>
 		<key>year</key>
 		<integer>2010</integer>
+		<key>link</key>
+		<string>https://talkhockey.wordpress.com/2008/09/16/hockey-blowout-82-0-slovakia-vs-bulgaria/</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>During the  Junior Hockey Championship, a brawl broke between Canada and the USSR. It lasted so long the officials had to turn off the lights in an attempt to quell the fight, but they were unsuccessful.</string>
+		<string>During Junior Hockey Championship, a brawl broke between Canada and the USSR</string>
 		<key>year</key>
 		<integer>1987</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/Punch-up_in_Piestany</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>Two of the greatest hockey players of all time, Mario Lemieux and Patrick Roy were born on the same day only 200 km (124 miles) apart. </string>
+		<string>Two of the greatest hockey players of all time, Mario Lemieux and Patrick Roy were born on the same day only 200 km apart. </string>
 		<key>year</key>
-		<integer>1961</integer>
+		<integer>1965</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/Mario_Lemieux#Personal_life</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>The  Stanley Cup Finals was the only game where no winner was declared due to an influenza outbreak, which hospitalized most of players from Montreal Canadiens and their general manager.</string>
+		<string>The Stanley Cup Finals was the only game where no winner was declared due to an influenza outbreak</string>
 		<key>year</key>
 		<integer>1919</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/1919_Stanley_Cup_Finals</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>After the Toronto Maple Leafs won the Stanley Cup in , they accidently threw the Cup into a celebratory bonfire and had to pay a hefty amount to repair the ensuing damages.</string>
+		<string>After the Toronto Maple Leafs won the Stanley Cup they accidently threw the Cup into a celebratory bonfire </string>
 		<key>year</key>
 		<integer>1962</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/Traditions_and_anecdotes_associated_with_the_Stanley_Cup#Misadventures</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>In , players from Ottawa Silver Seven, while drunk, kicked the Stanley Cup into the frozen Rideau Canal and had to retrieve it the next morning.</string>
+		<string>players from Ottawa Silver Seven, while drunk, kicked the Stanley Cup into the frozen Rideau Canal</string>
 		<key>year</key>
 		<integer>1905</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/Traditions_and_anecdotes_associated_with_the_Stanley_Cup#Misadventures</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>On , Billy Smith became the first goaltender in NHL history to be credited with a goal.</string>
+		<string>Billy Smith became the first goaltender in NHL history to be credited with a goal.</string>
 		<key>year</key>
 		<integer>1979</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/List_of_goaltenders_who_have_scored_a_goal_in_an_NHL_game</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>The survivors of a league that had grown at times to as many as 10 franchises, and had seen teams change names and cities with regularity in the , would settle in an era of stability, known as the age of the &quot;Original Six.&quot; The Red Wings, the Blackhawks, the Rangers, the Canadiens, the Bruins, and the Leafs; these few teams would symbolize hockey for fans across North America.</string>
+		<string>&quot;Original Six.&quot;: The Red Wings, the Blackhawks, the Rangers, the Canadiens, the Bruins, and the Leafs</string>
 		<key>year</key>
 		<integer>1920</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/Original_Six</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>In , Madison Square Garden owner Tex Rickard was falsely told by someone that the &quot;H&quot; stood for &quot;habitant&quot;, a French word that in those days was used to denote the farmers of Quebec.</string>
+		<string>Madison Square Garden owner Tex Rickard was falsely told by someone that the &quot;H&quot; stood for &quot;habitant&quot;</string>
 		<key>year</key>
 		<integer>1924</integer>
+		<key>link</key>
+		<string>https://answers.yahoo.com/question/index?qid=1006020403611</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>The octopus first made its appearance on , during the Red Wings&apos; Stanley Cup playoff run.</string>
+		<string>The octopus first made its appearance during the Red Wings&apos; Stanley Cup playoff run.</string>
 		<key>year</key>
 		<integer>1952</integer>
+		<key>link</key>
+		<string>http://redwings.ice.nhl.com/club/page.htm?id=43781</string>
 	</dict>
 	<dict>
 		<key>event</key>
-		<string>When a player scores his third goal of a game, fans usually throw hats on the ice. Rumor has it that a Toronto haberdasher gave players in the  free hats if they would score three goals in a game. The term however, probably evolved from cricket.</string>
+		<string>Rumor has it that a Toronto haberdasher gave players free hats if they would score three goals in a game</string>
 		<key>year</key>
 		<integer>1940</integer>
+		<key>link</key>
+		<string>http://roosterteeth.com/post/455994</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>Buffalo Sabres’ manager purposefully drafted a hockey player, who didn’t exist to mock the slow drafting process</string>
+		<key>year</key>
+		<integer>1974</integer>
+		<key>link</key>
+		<string>https://en.wikipedia.org/wiki/Taro_Tsujimoto</string>
+	</dict>
+	<dict>
+		<key>event</key>
+		<string>Goalie Abie Goldberry was set on fire during a game because the puck struck the pack of matches that he was carrying in his pocket.</string>
+		<key>year</key>
+		<integer>1930</integer>
+		<key>link</key>
+		<string>http://boredbug.com/15-awesome-facts-nhl/2/</string>
 	</dict>
 </array>
 </plist>
