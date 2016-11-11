@@ -19,9 +19,9 @@ class ViewController: UIViewController {
     
     let game: GameType
     var buttons: [FactButtonType] = []
-    var currentRound: Round
     var webEnabled: Bool = false            // enable web only when successfully ended round between rounds
     var wasSelectedButtonIndex: Int = 0
+    var currentRound: Round
     
     required init?(coder aDecoder: NSCoder) {
         do {
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         } catch let error {
             fatalError("\(error)")
         }
-        self.currentRound = self.game.selectNextRound()
+        self.currentRound = self.game.getNextRound()
         super.init(coder: aDecoder)
     }
     
@@ -42,7 +42,6 @@ class ViewController: UIViewController {
         hideWeb()
     
         self.becomeFirstResponder()
-        self.currentRound = game.selectNextRound()
         self.buttons = self.currentRound.showAndGetButtons(target: self, action: #selector(buttonPressed(sender:)), view: self.view)
     }
 
