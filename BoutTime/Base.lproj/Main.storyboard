@@ -22,9 +22,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FS-jz-1ln">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FS-jz-1ln">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.16169357300000001" blue="0.29287248849999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" backgroundImage="splash_screen"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="presentation" id="CKa-dw-elu"/>
@@ -32,6 +32,12 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2FS-jz-1ln" firstAttribute="top" secondItem="7CM-6c-0uk" secondAttribute="top" id="GXT-hi-y3K"/>
+                            <constraint firstItem="2FS-jz-1ln" firstAttribute="leading" secondItem="7CM-6c-0uk" secondAttribute="leading" id="dmK-qn-NGl"/>
+                            <constraint firstAttribute="trailing" secondItem="2FS-jz-1ln" secondAttribute="trailing" id="gmr-br-0D5"/>
+                            <constraint firstItem="ONy-id-ID4" firstAttribute="top" secondItem="2FS-jz-1ln" secondAttribute="bottom" id="sbV-bT-hYo"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SFA-1m-jCs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -71,18 +77,6 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="next_round_fail" translatesAutoresizingMaskIntoConstraints="NO" id="tjF-KA-zhe">
-                                <rect key="frame" x="116" y="580" width="143" height="42"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="1eM-pE-yBO"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="next_round_success" translatesAutoresizingMaskIntoConstraints="NO" id="EPZ-mF-BwL">
-                                <rect key="frame" x="116" y="580" width="143" height="42"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="3F5-GP-yBv"/>
-                                </constraints>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="webview_bar" translatesAutoresizingMaskIntoConstraints="NO" id="h0k-QN-xy5">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                 <constraints>
@@ -99,6 +93,26 @@
                                     <action selector="closeWeb" destination="BYZ-38-t0r" eventType="touchUpInside" id="TvL-k0-VSk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJP-hJ-yQS">
+                                <rect key="frame" x="115" y="534" width="145" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="GU6-q1-8RN"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="next_round_fail"/>
+                                <connections>
+                                    <action selector="nextRoundFailPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Gg-63-owt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fiL-aF-r1E">
+                                <rect key="frame" x="115" y="534" width="145" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="pzi-pM-QmZ"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="next_round_success"/>
+                                <connections>
+                                    <action selector="nextRoundSuccessPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Lo-u4-HOZ"/>
+                                </connections>
+                            </button>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gSX-dC-JNf">
                                 <rect key="frame" x="0.0" y="45" width="375" height="622"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -109,29 +123,31 @@
                             <constraint firstItem="h0k-QN-xy5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0sr-mT-MBS"/>
                             <constraint firstItem="5Q5-Bi-78U" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1c6-LB-f8N"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="18a-7u-CxN" secondAttribute="bottom" constant="45" id="4w3-cM-0Lx"/>
+                            <constraint firstItem="18a-7u-CxN" firstAttribute="top" secondItem="eJP-hJ-yQS" secondAttribute="bottom" constant="8" id="6k2-Zk-a8S"/>
+                            <constraint firstItem="gSX-dC-JNf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8wx-tm-eed"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5Q5-Bi-78U" secondAttribute="bottom" constant="20" id="CPV-r7-0PF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fiL-aF-r1E" secondAttribute="trailing" constant="99" id="D6a-cu-3wB"/>
                             <constraint firstItem="oF5-g8-iHe" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="FUd-7m-9A6"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="EPZ-mF-BwL" secondAttribute="trailing" constant="100" id="G3K-ih-Fj6"/>
                             <constraint firstItem="h0k-QN-xy5" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="I9z-RC-V7t"/>
-                            <constraint firstItem="tjF-KA-zhe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="100" id="Ipv-q6-5h1"/>
-                            <constraint firstItem="EPZ-mF-BwL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="100" id="KNm-Nq-NId"/>
+                            <constraint firstItem="gSX-dC-JNf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Kp2-DG-Zp3"/>
+                            <constraint firstAttribute="trailing" secondItem="gSX-dC-JNf" secondAttribute="trailing" id="MoR-aE-9sM"/>
+                            <constraint firstItem="gSX-dC-JNf" firstAttribute="top" secondItem="oF5-g8-iHe" secondAttribute="bottom" id="POE-R2-ik9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eJP-hJ-yQS" secondAttribute="trailing" constant="99" id="SRU-X2-3RN"/>
                             <constraint firstAttribute="trailing" secondItem="h0k-QN-xy5" secondAttribute="trailing" id="Sch-ZO-xPM"/>
-                            <constraint firstItem="gSX-dC-JNf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="W3A-c5-fUQ"/>
-                            <constraint firstAttribute="trailing" secondItem="gSX-dC-JNf" secondAttribute="trailing" id="W4u-gy-yAO"/>
-                            <constraint firstAttribute="trailing" secondItem="gSX-dC-JNf" secondAttribute="trailing" id="XuL-XD-ceg"/>
-                            <constraint firstItem="gSX-dC-JNf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ebx-3z-BQ0"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="tjF-KA-zhe" secondAttribute="bottom" constant="45" id="fAv-g8-YNC"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="tjF-KA-zhe" secondAttribute="trailing" constant="100" id="lJ8-Ze-N6S"/>
-                            <constraint firstItem="gSX-dC-JNf" firstAttribute="top" secondItem="oF5-g8-iHe" secondAttribute="bottom" id="lfB-IL-1pd"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EPZ-mF-BwL" secondAttribute="bottom" constant="45" id="qCJ-vw-fwS"/>
+                            <constraint firstItem="gSX-dC-JNf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XLp-yw-kKv"/>
+                            <constraint firstItem="18a-7u-CxN" firstAttribute="top" secondItem="fiL-aF-r1E" secondAttribute="bottom" constant="8" id="Xic-M5-QV8"/>
+                            <constraint firstAttribute="trailing" secondItem="gSX-dC-JNf" secondAttribute="trailing" id="Xx4-bZ-BOO"/>
+                            <constraint firstAttribute="trailing" secondItem="gSX-dC-JNf" secondAttribute="trailing" id="YZu-R7-t2v"/>
+                            <constraint firstItem="eJP-hJ-yQS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="99" id="mxb-fz-06f"/>
+                            <constraint firstItem="fiL-aF-r1E" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="99" id="rM8-Z0-KmI"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gSX-dC-JNf" secondAttribute="bottom" id="tph-d0-jHu"/>
                             <constraint firstAttribute="trailing" secondItem="oF5-g8-iHe" secondAttribute="trailing" id="wjh-U9-otU"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gSX-dC-JNf" secondAttribute="bottom" id="z7N-RF-LBK"/>
                             <constraint firstItem="18a-7u-CxN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zfX-sa-CUG"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="nextRoundFailImageView" destination="tjF-KA-zhe" id="ZWD-dj-fEJ"/>
-                        <outlet property="nextRoundSuccessImageView" destination="EPZ-mF-BwL" id="MB0-EA-25a"/>
+                        <outlet property="nextRoundFailButton" destination="eJP-hJ-yQS" id="2X4-q4-ajp"/>
+                        <outlet property="nextRoundSuccessButton" destination="fiL-aF-r1E" id="1vy-B1-27V"/>
                         <outlet property="timeLabel" destination="18a-7u-CxN" id="Gx0-Gr-6sf"/>
                         <outlet property="webBarCloseButton" destination="oF5-g8-iHe" id="VOG-kn-ds0"/>
                         <outlet property="webView" destination="gSX-dC-JNf" id="qaz-rZ-pMy"/>
@@ -140,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="689" y="55"/>
+            <point key="canvasLocation" x="688.79999999999995" y="54.422788605697157"/>
         </scene>
     </scenes>
     <resources>

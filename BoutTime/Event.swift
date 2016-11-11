@@ -32,9 +32,9 @@ protocol GameType {
     var facts: [FactType] { get }
     var rounds: Int { get }
     var timePerRound: Int { get }
-    var correctAnswers: Int { get set }
     var roundsDone: Int { get set }
     var factsPerRound: Int { get }
+    var completedRounds: Int { get set }
     
     init(facts: [FactType], rounds: Int, timePerRound: Int, factsPerRound: Int)
     func selectNextRound() -> Round
@@ -48,8 +48,8 @@ struct Fact: FactType {
     
     func getTitle() -> String {
         var title = self.event
-        if title.characters.count > 100 { // max length 100 chars
-            let startIndex = title.index(title.startIndex, offsetBy: 100)
+        if title.characters.count > 200 { // max length 200 chars
+            let startIndex = title.index(title.startIndex, offsetBy: 200)
             title = title.substring(to: startIndex)
         }
         return title
@@ -109,17 +109,18 @@ class Game: GameType {
     let facts: [FactType]
     let rounds: Int
     let timePerRound: Int
-    var correctAnswers: Int
     var roundsDone: Int
     let factsPerRound: Int
+    var completedRounds: Int
+    var currentRound: RoundType
     
     required init(facts: [FactType], rounds: Int, timePerRound: Int, factsPerRound: Int) {
         self.facts = facts
         self.rounds = rounds
         self.timePerRound = timePerRound
-        self.correctAnswers = 0
         self.roundsDone = 0
         self.factsPerRound = factsPerRound
+        self.completedRounds = 0
     }
     
     // select factsPerRound (4) random facts from facts array, avoid repeats
@@ -136,6 +137,13 @@ class Game: GameType {
         }
         
         return Round(facts: choosenFacts)
+    }
+    
+    func finishRound() {
+        self.roundsDone += 1
+        if currentRound.isSet() {
+            completedRounds += 1
+        }
     }
     
     func isFinished() -> Bool {
