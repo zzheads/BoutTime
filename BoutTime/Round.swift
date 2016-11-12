@@ -70,9 +70,3 @@ class Round: RoundType, Swapable {
         }
     }
 }
-
-// Errors
-
-enum RoundError: Error {
-    case InitializationError
-}

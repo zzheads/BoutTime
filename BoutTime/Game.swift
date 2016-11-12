@@ -16,12 +16,13 @@ protocol GameType {
     var roundsDone: Int { get set }
     var factsPerRound: Int { get }
     var completedRounds: Int { get set }
-    var currentRound: RoundType? { get set }
+    var currentRound: Round? { get set }
     
     init(facts: [FactType], rounds: Int, timePerRound: Int, factsPerRound: Int)
-    func getNextRound() -> Round
+    func getNextRound() throws -> Round
     func isFinished() -> Bool
-    func getCurrentRound() -> RoundType?
+    func restart()
+    func finishRound() throws
 }
 
 class Game: GameType {
@@ -31,7 +32,7 @@ class Game: GameType {
     var roundsDone: Int
     let factsPerRound: Int
     var completedRounds: Int
-    var currentRound: RoundType?
+    var currentRound: Round?
     
     required init(facts: [FactType], rounds: Int, timePerRound: Int, factsPerRound: Int) {
         self.facts = facts
@@ -44,7 +45,7 @@ class Game: GameType {
     }
     
     // select factsPerRound (4) random facts from facts array, avoid repeats
-    func getNextRound() -> Round {
+    func getNextRound() throws -> Round {
         var choosenFacts: [FactType] = []
         var randomIndex: Int
         var indexesUsed: [Int] = [] // store here already choosen fact indexes
@@ -56,19 +57,21 @@ class Game: GameType {
             choosenFacts.append(self.facts[randomIndex])
         }
         
-        return Round(facts: choosenFacts)
+        self.currentRound = Round(facts: choosenFacts)
+        if let round = self.currentRound {
+            return round
+        } else {
+            throw GameError.RoundInitializationError
+        }
     }
     
-    func getCurrentRound() -> RoundType? {
-        return self.currentRound
-    }
-    
-    func finishRound() {
+    func finishRound() throws {
+        guard let currentRound = self.currentRound else {
+            throw GameError.RoundInitializationError
+        }
         self.roundsDone += 1
-        if let currentRound = self.currentRound {
-            if currentRound.isSet() {
-                completedRounds += 1
-            }
+        if currentRound.isSet() {
+            completedRounds += 1
         }
     }
     
@@ -77,6 +80,12 @@ class Game: GameType {
             return true
         }
         return false
+    }
+    
+    func restart() {
+        self.roundsDone = 0
+        self.completedRounds = 0
+        self.currentRound = nil
     }
 }
 
@@ -90,6 +99,10 @@ enum InventoryError: Error {
 
 enum FactError: Error {
     case OutOfRange
+}
+
+enum GameError: Error {
+    case RoundInitializationError
 }
 
 // Helper classes

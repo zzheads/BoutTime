@@ -16,6 +16,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var webBarCloseButton: UIButton!
     @IBOutlet weak var nextRoundSuccessButton: UIButton!
     @IBOutlet weak var nextRoundFailButton: UIButton!
+    @IBOutlet weak var resultsLabel: UILabel!
+    
+    @IBOutlet weak var playAgainButton: UIButton!
     
     let game: GameType
     var buttons: [FactButtonType] = []
@@ -27,17 +30,18 @@ class ViewController: UIViewController {
         do {
             let array = try PlistConverter.arrayFromFile(resource: "Facts", ofType: "plist")
             let facts = try InventoryUnarchiver.factsFromArray(array: array)
-            self.game = Game(facts: facts, rounds: 3, timePerRound: 30, factsPerRound: 4)
+            self.game = Game(facts: facts, rounds: 1, timePerRound: 30, factsPerRound: 4)
+            try self.currentRound = self.game.getNextRound()
         } catch let error {
             fatalError("\(error)")
         }
-        self.currentRound = self.game.getNextRound()
         super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
       // Do any additional setup after loading the view, typically from a nib.
+        hideResults()
         hideNextRoundButton()
         hideWeb()
     
@@ -57,6 +61,9 @@ class ViewController: UIViewController {
         // print("Device was shaken!")
         let roundCompleted = self.currentRound.isSet()
         showNextRoundButton(success: roundCompleted)
+        if roundCompleted {
+            self.webEnabled = true
+        }
     }
     
     func buttonPressed(sender: UIButton) {
@@ -105,10 +112,50 @@ class ViewController: UIViewController {
         hideNextRoundButton()
         removeButtonsFromView()
         self.buttons.removeAll()
+        self.webEnabled = false
         // start next round
+        do {
+            try self.game.finishRound()
+        } catch let error {
+            fatalError("\(error)")
+        }
+        if !game.isFinished() {
+            do {
+                try self.currentRound = self.game.getNextRound()
+            } catch let error {
+                fatalError("\(error)")
+            }
+            self.buttons = self.currentRound.showAndGetButtons(target: self, action: #selector(buttonPressed(sender:)), view: self.view)
+        } else {
+            // show results and play again button
+            showResults()
+        }
     }
     
+    @IBAction func playAgainButtonPressed() {
+        hideResults()
+        self.game.restart()
+        do {
+            try self.currentRound = self.game.getNextRound()
+        } catch let error {
+            fatalError("\(error)")
+        }
+        self.buttons = self.currentRound.showAndGetButtons(target: self, action: #selector(buttonPressed(sender:)), view: self.view)
+    }
+    
+    
     // Helper methods
+    
+    func hideResults() {
+        resultsLabel.isHidden = true
+        playAgainButton.isHidden = true
+    }
+    
+    func showResults() {
+        resultsLabel.text = "Rounds played: \(self.game.roundsDone)\nCompleted correctly: \(self.game.completedRounds)"
+        resultsLabel.isHidden = false
+        playAgainButton.isHidden = false
+    }
     
     func showNextRoundButton(success: Bool) {
         if success {
