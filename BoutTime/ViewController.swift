@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultsLabel: UILabel!
     @IBOutlet weak var helpButton: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
+    @IBOutlet weak var shakeLabel: UILabel!
     
     let game: GameType
     let TIME_PER_ROUND = 60                 // in seconds
@@ -30,7 +31,11 @@ class ViewController: UIViewController {
     var timer: Timer?
     var timeElapsed: Int = 0
     let selectorToTimerUpdateFunc: Selector = #selector(updateTimer)
-    var isShakeable = false
+    var isShakeable: Bool = false {
+        didSet {
+            self.shakeLabel.isHidden = !self.isShakeable
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {
         do {

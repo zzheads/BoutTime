@@ -197,6 +197,7 @@
                         <outlet property="nextRoundSuccessButton" destination="fiL-aF-r1E" id="1vy-B1-27V"/>
                         <outlet property="playAgainButton" destination="KjL-nD-yzs" id="fOw-oB-8Fp"/>
                         <outlet property="resultsLabel" destination="2Pc-Ax-Otx" id="80S-M4-Rte"/>
+                        <outlet property="shakeLabel" destination="5Q5-Bi-78U" id="CRu-QU-NNo"/>
                         <outlet property="timeLabel" destination="18a-7u-CxN" id="Gx0-Gr-6sf"/>
                         <outlet property="webBarCloseButton" destination="oF5-g8-iHe" id="VOG-kn-ds0"/>
                         <outlet property="webView" destination="gSX-dC-JNf" id="qaz-rZ-pMy"/>

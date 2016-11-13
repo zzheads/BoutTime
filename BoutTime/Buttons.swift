@@ -19,11 +19,8 @@ enum SwapButtons: String {
     case down_full_selected
     
     func icon() -> UIImage {
-        if let image = UIImage(named: self.rawValue) {
-            return image
-        } else {
-            return UIImage(named: "Default")!
-        }
+        let image = UIImage(named: self.rawValue)
+        return image!
     }
 }
 
