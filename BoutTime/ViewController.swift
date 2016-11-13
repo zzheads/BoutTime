@@ -17,20 +17,26 @@ class ViewController: UIViewController {
     @IBOutlet weak var nextRoundSuccessButton: UIButton!
     @IBOutlet weak var nextRoundFailButton: UIButton!
     @IBOutlet weak var resultsLabel: UILabel!
-    
+    @IBOutlet weak var helpButton: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
     
     let game: GameType
+    let TIME_PER_ROUND = 60                 // in seconds
+    let ROUNDS_IN_GAME = 6
     var buttons: [FactButtonType] = []
     var webEnabled: Bool = false            // enable web only when successfully ended round between rounds
     var wasSelectedButtonIndex: Int = 0
     var currentRound: Round
+    var timer: Timer?
+    var timeElapsed: Int = 0
+    let selectorToTimerUpdateFunc: Selector = #selector(updateTimer)
+    var isShakeable = false
     
     required init?(coder aDecoder: NSCoder) {
         do {
             let array = try PlistConverter.arrayFromFile(resource: "Facts", ofType: "plist")
             let facts = try InventoryUnarchiver.factsFromArray(array: array)
-            self.game = Game(facts: facts, rounds: 1, timePerRound: 30, factsPerRound: 4)
+            self.game = Game(facts: facts, rounds: self.ROUNDS_IN_GAME, factsPerRound: 4)
             try self.currentRound = self.game.getNextRound()
         } catch let error {
             fatalError("\(error)")
@@ -47,6 +53,7 @@ class ViewController: UIViewController {
     
         self.becomeFirstResponder()
         self.buttons = self.currentRound.showAndGetButtons(target: self, action: #selector(buttonPressed(sender:)), view: self.view)
+        startTimer()
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,10 +66,27 @@ class ViewController: UIViewController {
     // Shake phone listener
     override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
         // print("Device was shaken!")
-        let roundCompleted = self.currentRound.isSet()
-        showNextRoundButton(success: roundCompleted)
-        if roundCompleted {
+        if self.isShakeable {
+            stopTimer()
+            let roundCompleted = self.currentRound.isSet()
+            showNextRoundButton(success: roundCompleted)
             self.webEnabled = true
+        }
+    }
+    
+    func updateTimer() {
+        self.timeElapsed += 1
+        self.timeLabel.text = String(format: "0:%02d", self.timeElapsed)
+        if let timer = self.timer {
+            print(timer.debugDescription)
+        }
+        if self.timeElapsed == self.TIME_PER_ROUND {
+            stopTimer()
+            let roundCompleted = self.currentRound.isSet()
+            showNextRoundButton(success: roundCompleted)
+            if roundCompleted {
+                self.webEnabled = true
+            }
         }
     }
     
@@ -105,10 +129,61 @@ class ViewController: UIViewController {
     }
     
     @IBAction func nextRoundFailPressed() {
-        hideNextRoundButton()
+        finishRound()
     }
     
     @IBAction func nextRoundSuccessPressed() {
+        finishRound()
+    }
+    
+    @IBAction func playAgainButtonPressed() {
+        hideResults()
+        self.game.restart()
+        do {
+            try self.currentRound = self.game.getNextRound()
+        } catch let error {
+            fatalError("\(error)")
+        }
+        self.buttons = self.currentRound.showAndGetButtons(target: self, action: #selector(buttonPressed(sender:)), view: self.view)
+        startTimer()
+    }
+    
+    @IBAction func helpButtonPressed() {
+        showAlert(title: "Sort historical facts from newest to oldest (top to bottom).\n So newer fact must be upper than older one.")
+    }
+    
+    // Helper methods
+    
+    func showAlert(title: String, message: String? = nil, style: UIAlertControllerStyle = .alert ) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: dismissAlert(sender:))
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func dismissAlert(sender: UIAlertAction) {
+    }
+    
+    func startTimer() {
+        self.isShakeable = true
+        
+        self.timeElapsed = 0
+        self.timeLabel.text = "0:00"
+        self.timeLabel.isHidden = false
+        self.timer = Timer.init()
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: self.selectorToTimerUpdateFunc, userInfo: nil, repeats: true)
+    }
+    
+    func stopTimer() {
+        self.isShakeable = false
+        
+        if let timer = self.timer {
+            timer.invalidate()
+        }
+        self.timeLabel.isHidden = true
+    }
+    
+    func finishRound() {
         hideNextRoundButton()
         removeButtonsFromView()
         self.buttons.removeAll()
@@ -126,25 +201,12 @@ class ViewController: UIViewController {
                 fatalError("\(error)")
             }
             self.buttons = self.currentRound.showAndGetButtons(target: self, action: #selector(buttonPressed(sender:)), view: self.view)
+            startTimer()
         } else {
             // show results and play again button
             showResults()
         }
     }
-    
-    @IBAction func playAgainButtonPressed() {
-        hideResults()
-        self.game.restart()
-        do {
-            try self.currentRound = self.game.getNextRound()
-        } catch let error {
-            fatalError("\(error)")
-        }
-        self.buttons = self.currentRound.showAndGetButtons(target: self, action: #selector(buttonPressed(sender:)), view: self.view)
-    }
-    
-    
-    // Helper methods
     
     func hideResults() {
         resultsLabel.isHidden = true
@@ -158,6 +220,7 @@ class ViewController: UIViewController {
     }
     
     func showNextRoundButton(success: Bool) {
+        timeLabel.isHidden = true
         if success {
             nextRoundSuccessButton.isHidden = false
         } else {
@@ -166,6 +229,7 @@ class ViewController: UIViewController {
     }
     
     func hideNextRoundButton() {
+        timeLabel.isHidden = false
         nextRoundFailButton.isHidden = true
         nextRoundSuccessButton.isHidden = true
     }

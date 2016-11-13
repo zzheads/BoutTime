@@ -12,13 +12,12 @@ import GameKit
 protocol GameType {
     var facts: [FactType] { get }
     var rounds: Int { get }
-    var timePerRound: Int { get }
     var roundsDone: Int { get set }
     var factsPerRound: Int { get }
     var completedRounds: Int { get set }
     var currentRound: Round? { get set }
     
-    init(facts: [FactType], rounds: Int, timePerRound: Int, factsPerRound: Int)
+    init(facts: [FactType], rounds: Int, factsPerRound: Int)
     func getNextRound() throws -> Round
     func isFinished() -> Bool
     func restart()
@@ -28,16 +27,14 @@ protocol GameType {
 class Game: GameType {
     let facts: [FactType]
     let rounds: Int
-    let timePerRound: Int
     var roundsDone: Int
     let factsPerRound: Int
     var completedRounds: Int
     var currentRound: Round?
     
-    required init(facts: [FactType], rounds: Int, timePerRound: Int, factsPerRound: Int) {
+    required init(facts: [FactType], rounds: Int, factsPerRound: Int) {
         self.facts = facts
         self.rounds = rounds
-        self.timePerRound = timePerRound
         self.roundsDone = 0
         self.factsPerRound = factsPerRound
         self.completedRounds = 0
