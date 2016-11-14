@@ -19,25 +19,15 @@ enum SwapButtons: String {
     case down_full_selected
     
     func icon() -> UIImage {
-        let image = UIImage(named: self.rawValue)
-        return image!
+        if let image = UIImage(named: self.rawValue) {
+            return image
+        } else {
+            return UIImage(named: "Default")!
+        }
     }
 }
 
-protocol FactButtonType {
-    var eventButton: UIButton { get set }
-    var upImage: UIImageView? { get }
-    var downImage: UIImageView? { get }
-    var upButton: UIButton? { get }
-    var downButton: UIButton? { get }
-    
-    init(fact: FactType, index: Int, maxIndex: Int, target: Any?, action: Selector, view: UIView)
-    func updateEventButton(fact: FactType)
-    func select()
-    func unSelect()
-}
-
-class FactButton: FactButtonType {
+class FactButton {
     var eventButton: UIButton
     var upImage: UIImageView?
     var downImage: UIImageView?
@@ -49,12 +39,12 @@ class FactButton: FactButtonType {
     let titleColorUnselected = UIColor(red: 8/255.0, green: 43/255.0, blue: 62/255.0, alpha: 0.5)
     let backgroundColor = UIColor.white
 
-    required init(fact: FactType, index: Int, maxIndex: Int, target: Any?, action: Selector, view: UIView) {
+    required init(fact: Fact, index: Int, maxIndex: Int, target: Any?, action: Selector, view: UIView) {
         var x = 20
         let height = (Int(UIScreen.main.bounds.height) - 100 - 20 * maxIndex) / maxIndex
         let y = 20 + (height + 20) * index
         var width = Int(UIScreen.main.bounds.width) - 80
-        let title = fact.getTitle()
+        let title = fact.title
         
         self.eventButton = UIButton(type: .system)
         self.eventButton.setTitle(title, for: .normal)
@@ -127,8 +117,8 @@ class FactButton: FactButtonType {
         }
     }
     
-    func updateEventButton(fact: FactType) {
-        self.eventButton.setTitle(fact.getTitle(), for: .normal)
+    func updateEventButton(fact: Fact) {
+        self.eventButton.setTitle(fact.title, for: .normal)
     }
 
     func select() {
@@ -148,6 +138,42 @@ class FactButton: FactButtonType {
         }
         if let downImage = self.downImage {
             downImage.isHighlighted = false
+        }
+    }
+    
+    func show() {
+        self.eventButton.isHidden = false
+        if let downImage = self.downImage, let downButton = self.downButton {
+            downImage.isHidden = false
+            downButton.isHidden = false
+        }
+        if let upImage = self.upImage, let upButton = self.upButton {
+            upImage.isHidden = false
+            upButton.isHidden = false
+        }
+    }
+    
+    func hide() {
+        self.eventButton.isHidden = true
+        if let downImage = self.downImage, let downButton = self.downButton {
+            downImage.isHidden = true
+            downButton.isHidden = true
+        }
+        if let upImage = self.upImage, let upButton = self.upButton {
+            upImage.isHidden = true
+            upButton.isHidden = true
+        }
+    }
+    
+    func removeFromSuperview() {
+        self.eventButton.removeFromSuperview()
+        if let upImage = self.upImage, let upButton = self.upButton {
+            upImage.removeFromSuperview()
+            upButton.removeFromSuperview()
+        }
+        if let downImage = self.downImage, let downButton = self.downButton {
+            downImage.removeFromSuperview()
+            downButton.removeFromSuperview()
         }
     }
     

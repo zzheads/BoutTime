@@ -8,31 +8,15 @@
 
 import GameKit
 
-
-protocol GameType {
-    var facts: [FactType] { get }
-    var rounds: Int { get }
-    var roundsDone: Int { get set }
-    var factsPerRound: Int { get }
-    var completedRounds: Int { get set }
-    var currentRound: Round? { get set }
-    
-    init(facts: [FactType], rounds: Int, factsPerRound: Int)
-    func getNextRound() throws -> Round
-    func isFinished() -> Bool
-    func restart()
-    func finishRound() throws
-}
-
-class Game: GameType {
-    let facts: [FactType]
+class Game {
+    let facts: [Fact]
     let rounds: Int
     var roundsDone: Int
     let factsPerRound: Int
     var completedRounds: Int
     var currentRound: Round?
     
-    required init(facts: [FactType], rounds: Int, factsPerRound: Int) {
+    required init(facts: [Fact], rounds: Int, factsPerRound: Int) {
         self.facts = facts
         self.rounds = rounds
         self.roundsDone = 0
@@ -43,7 +27,7 @@ class Game: GameType {
     
     // select factsPerRound (4) random facts from facts array, avoid repeats
     func getNextRound() throws -> Round {
-        var choosenFacts: [FactType] = []
+        var choosenFacts: [Fact] = []
         var randomIndex: Int
         var indexesUsed: [Int] = [] // store here already choosen fact indexes
         for _ in 0..<self.factsPerRound {
@@ -117,8 +101,8 @@ class PlistConverter {
 }
 
 class InventoryUnarchiver {
-    class func factsFromArray(array: [AnyObject]) throws -> [FactType] {
-        var facts: [FactType] = []
+    class func factsFromArray(array: [AnyObject]) throws -> [Fact] {
+        var facts: [Fact] = []
         for element in array {
             if let itemDict = element as? [String: AnyObject], let event = itemDict["event"] as? String, let year = itemDict["year"] as? Int, let link = itemDict["link"] as? String {
                 let fact = Fact(event: event, year: year, link: link)

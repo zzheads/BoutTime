@@ -21,10 +21,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var playAgainButton: UIButton!
     @IBOutlet weak var shakeLabel: UILabel!
     
-    let game: GameType
+    let game: Game
     let TIME_PER_ROUND = 60                 // in seconds
     let ROUNDS_IN_GAME = 6
-    var buttons: [FactButtonType] = []
+    var buttons: [FactButton] = []
     var webEnabled: Bool = false            // enable web only when successfully ended round between rounds
     var wasSelectedButtonIndex: Int = 0
     var currentRound: Round
@@ -82,9 +82,7 @@ class ViewController: UIViewController {
     func updateTimer() {
         self.timeElapsed += 1
         self.timeLabel.text = String(format: "0:%02d", self.timeElapsed)
-        if let timer = self.timer {
-            print(timer.debugDescription)
-        }
+
         if self.timeElapsed == self.TIME_PER_ROUND {
             stopTimer()
             let roundCompleted = self.currentRound.isSet()
@@ -99,8 +97,7 @@ class ViewController: UIViewController {
         if sender.currentTitle != nil {                                 // sender is eventButton when title is not nil, else it's up or down button
             let index = sender.tag
             let link = self.currentRound.facts[index].link
-            // print("Pressed button #\(sender.tag)")
-            // print("Title: \(title), Link: \(link)")
+            // print("Pressed event button #\(sender.tag)")
             if (webEnabled) {
                 hideButtons()
                 showWeb(link: link)
@@ -258,43 +255,19 @@ class ViewController: UIViewController {
     
     func hideButtons() {
         for button in self.buttons {
-            button.eventButton.isHidden = true
-            if let downImage = button.downImage, let downButton = button.downButton {
-                downImage.isHidden = true
-                downButton.isHidden = true
-            }
-            if let upImage = button.upImage, let upButton = button.upButton {
-                upImage.isHidden = true
-                upButton.isHidden = true
-            }
+            button.hide()
         }
     }
     
     func showButtons() {
         for button in self.buttons {
-            button.eventButton.isHidden = false
-            if let downImage = button.downImage, let downButton = button.downButton {
-                downImage.isHidden = false
-                downButton.isHidden = false
-            }
-            if let upImage = button.upImage, let upButton = button.upButton {
-                upImage.isHidden = false
-                upButton.isHidden = false
-            }
+            button.show()
         }
     }
     
     func removeButtonsFromView() {
         for button in self.buttons {
-            button.eventButton.removeFromSuperview()
-            if let upImage = button.upImage, let upButton = button.upButton {
-                upImage.removeFromSuperview()
-                upButton.removeFromSuperview()
-            }
-            if let downImage = button.downImage, let downButton = button.downButton {
-                downImage.removeFromSuperview()
-                downButton.removeFromSuperview()
-            }
+            button.removeFromSuperview()
         }
     }
 }

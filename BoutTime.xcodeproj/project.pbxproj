@@ -18,7 +18,7 @@
 		A68A6D711DD31A8000A3D5FD /* BoutTimeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68A6D701DD31A8000A3D5FD /* BoutTimeUITests.swift */; };
 		A68A6D7F1DD31C5B00A3D5FD /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68A6D7E1DD31C5B00A3D5FD /* Game.swift */; };
 		A68A6D851DD347E600A3D5FD /* Facts.plist in Resources */ = {isa = PBXBuildFile; fileRef = A68A6D841DD347E600A3D5FD /* Facts.plist */; };
-		A68A6D891DD35BC700A3D5FD /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68A6D881DD35BC700A3D5FD /* Buttons.swift */; };
+		A68A6D891DD35BC700A3D5FD /* FactButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68A6D881DD35BC700A3D5FD /* FactButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +56,7 @@
 		A68A6D721DD31A8000A3D5FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A68A6D7E1DD31C5B00A3D5FD /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		A68A6D841DD347E600A3D5FD /* Facts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Facts.plist; sourceTree = SOURCE_ROOT; };
-		A68A6D881DD35BC700A3D5FD /* Buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		A68A6D881DD35BC700A3D5FD /* FactButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +115,7 @@
 				A68A6D591DD31A8000A3D5FD /* LaunchScreen.storyboard */,
 				A68A6D5C1DD31A8000A3D5FD /* Info.plist */,
 				A68A6D7E1DD31C5B00A3D5FD /* Game.swift */,
-				A68A6D881DD35BC700A3D5FD /* Buttons.swift */,
+				A68A6D881DD35BC700A3D5FD /* FactButton.swift */,
 				A649DD7B1DD689FB00522FCD /* Fact.swift */,
 				A649DD7D1DD68A4200522FCD /* Round.swift */,
 			);
@@ -283,7 +283,7 @@
 				A649DD7C1DD689FB00522FCD /* Fact.swift in Sources */,
 				A68A6D511DD31A8000A3D5FD /* AppDelegate.swift in Sources */,
 				A649DD7E1DD68A4200522FCD /* Round.swift in Sources */,
-				A68A6D891DD35BC700A3D5FD /* Buttons.swift in Sources */,
+				A68A6D891DD35BC700A3D5FD /* FactButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,23 +9,14 @@
 import GameKit
 
 protocol Swapable {
-    mutating func up(index: Int)
-    mutating func down(index: Int)
+    func up(index: Int)
+    func down(index: Int)
 }
 
-protocol RoundType {
-    var facts: [FactType] { get set }
+class Round: Swapable {
+    var facts: [Fact]
     
-    init(facts: [FactType])
-    func isSet() -> Bool
-    func showAndGetButtons(target: Any?, action: Selector, view: UIView) -> [FactButtonType]
-    func updateEventButtons(buttons: [FactButtonType])
-}
-
-class Round: RoundType, Swapable {
-    var facts: [FactType]
-    
-    required init(facts: [FactType]) {
+    init (facts: [Fact]) {
         self.facts = facts
     }
     
@@ -52,8 +43,8 @@ class Round: RoundType, Swapable {
         return isSet
     }
     
-    func showAndGetButtons(target: Any?, action: Selector, view: UIView) -> [FactButtonType] {
-        var buttons: [FactButtonType] = []
+    func showAndGetButtons(target: Any?, action: Selector, view: UIView) -> [FactButton] {
+        var buttons: [FactButton] = []
         for i in 0..<self.facts.count {
             let fact = self.facts[i]
             let factButton = FactButton(fact: fact, index: i, maxIndex: self.facts.count, target: target, action: action, view: view)
@@ -62,7 +53,7 @@ class Round: RoundType, Swapable {
         return buttons
     }
     
-    func updateEventButtons(buttons: [FactButtonType]) {
+    func updateEventButtons(buttons: [FactButton]) {
         for i in 0..<self.facts.count {
             let fact = self.facts[i]
             let button = buttons[i]
